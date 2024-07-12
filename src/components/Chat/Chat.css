@@ -1,0 +1,50 @@
+.chat {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+    padding-top: 20px;
+}
+
+.chatTitle {
+    border-bottom: 2px solid rgb(231, 229, 229);
+    margin: 0;
+}
+
+.chat h3 {
+    margin: 0;
+    color: gray;
+    padding-bottom:28px;
+}
+
+.chatscreen {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+}
+
+.chatMessages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
+    max-height: calc(100vh - 200px); /* Adjust this value based on your chat input height */
+    display: flex;
+    flex-direction: column;
+}
+
+.chatInputContainer {
+    background-color: rgba(229, 219, 219, 0.3);
+    height: 80px; /* Set the height to your desired value */
+    padding: 10px;
+    bottom: 0;
+    width: 100%;
+    z-index: 1;
+   
+}
+
+.chatMessages::-webkit-scrollbar {
+    display: none;
+}
+

@@ -1,0 +1,14 @@
+.optionbar
+{
+    width: 20%;
+    min-height: 100vh;
+    display: inline;
+    top:0;
+    left:0;
+    bottom:0;
+    margin:0;
+    position: fixed;
+    left: 12%; 
+    background-color: rgba(234, 241, 255, 0.823);
+   
+}
