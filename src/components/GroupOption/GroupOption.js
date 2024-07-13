@@ -24,9 +24,7 @@ function GroupOption({ myUserName, setMyUserName, conn, setConnection, activeCha
 
     try {
       const conn = new HubConnectionBuilder()
-      .withUrl("https://mychatmor.azurewebsites.net/chat", {
-        withCredentials: true
-      })
+        .withUrl("https://mychatmor.azurewebsites.net/chat")
         .configureLogging(LogLevel.Information)
         .build();
 
@@ -49,7 +47,7 @@ function GroupOption({ myUserName, setMyUserName, conn, setConnection, activeCha
             message: msg,
           },
         ]);
-        console.log("revice username", username);
+        console.log("receive username", username);
       });
 
       await conn.start();
