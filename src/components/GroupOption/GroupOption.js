@@ -23,39 +23,29 @@ function GroupOption({ myUserName, setMyUserName, conn, setConnection, activeCha
     setActiveChat(group);
 
     try {
-      const conn = new HubConnectionBuilder()
-        .withUrl("https://mychatmor.azurewebsites.net/chat")
-        .configureLogging(LogLevel.Information)
-        .build();
 
-      conn.on("ListenRoomJoining", (username, msg) => {
-        console.log("msg: ", msg);
-        setMessages((prevMessages) => [
-          ...prevMessages,
-          {
-            sender: { name: username, avatar: 'path/to/avatar.jpg' }, // Adjust avatar path as needed
-            message: msg,
-          },
-        ]);
-      });
+      const conn=new HubConnectionBuilder().withUrl("https://mychatmor.azurewebsites.net/chat").configureLogging(LogLevel.Information).build();
 
-      conn.on("ReceiveSpecificMessage", (username, msg) => {
-        setMessages((prevMessages) => [
-          ...prevMessages,
-          {
-            sender: { name: username, avatar: 'path/to/avatar.jpg' }, // Adjust avatar path as needed
-            message: msg,
-          },
-        ]);
-        console.log("receive username", username);
-      });
+      conn.on("ListenRoomJoining",(username,msg)=>{  //listening for users joinging messages
+          console.log("msg: ",msg);
+          setMessages(messages=>[...messages,{username,msg}])
+      })
+
+      conn.on("ReceiveSpecificMessage",(username,msg)=>  //listening for chatting messages
+      {
+          console.log("fun");
+          setMessages(messages=>[...messages,{username,msg}])
+
+      })
 
       await conn.start();
+      await conn.invoke("joinSpecificChatRoom",{userName,chatRoom});
       setConnection(conn);
-      await conn.invoke("joinSpecificChatRoom", { userName: newUserName, chatRoom: newChatRoom });
-    } catch (error) {
-      console.log(error);
-    }
+
+
+  } catch (error) {
+    console.log(error);
+  }
   }
 
   return (
