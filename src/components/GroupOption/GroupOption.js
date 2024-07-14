@@ -22,10 +22,7 @@ function GroupOption({ myUserName, setMyUserName, conn, setConnection, activeCha
 
     try {
       const conn = new HubConnectionBuilder()
-        .withUrl("https://mychatmor.azurewebsites.net/chat", {
-          skipNegotiation: true,
-          transport: HttpTransportType.WebSockets
-      }
+        .withUrl("https://mychatmor.azurewebsites.net/chat"
         )
         .configureLogging(LogLevel.Information)
         .build();
