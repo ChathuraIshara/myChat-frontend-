@@ -25,7 +25,7 @@ function Chat({ myUserName, setMyUserName, conn, setConnection, activeChat, mess
               key={index}
               sender={msg.sender}
               message={msg.message}
-              isSender={msg.sender.name === myUserName}
+              isSender={msg.sender && msg.sender.name === myUserName}
             />
           ))}
         </div>

@@ -5,47 +5,54 @@ import SendIcon from '@mui/icons-material/Send';
 import './GroupOption.css';
 import AddIcon from '@mui/icons-material/Add';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
-
 function GroupOption({ myUserName, setMyUserName, conn, setConnection, activeChat, setActiveChat, messages, setMessages }) {
   const [groups, setGroups] = useState([{ name: 'Python Dev' }, { name: 'Call of Duty' }, { name: 'Cricket World' }]);
   const [userName, setUserName] = useState();
   const [chatRoom, setChatRoom] = useState();
   
-
   async function handleChatClick(group) {
     let x = Math.floor(Math.random() * 100) + 1;
     const newUserName = `${x}`;
     const newChatRoom = group.name;
-
     setMyUserName(newUserName);
     setUserName(newUserName);
     setChatRoom(newChatRoom);
     setActiveChat(group);
 
     try {
+      const conn = new HubConnectionBuilder()
+        .withUrl("https://localhost:7071/chat")
+        .configureLogging(LogLevel.Information)
+        .build();
 
-      const conn=new HubConnectionBuilder().withUrl("https://mychatmor.azurewebsites.net/chat").configureLogging(LogLevel.Information).build();
+      conn.on("ListenRoomJoining", (username, msg) => {
+        console.log("msg: ", msg);
+        setMessages((prevMessages) => [
+          ...prevMessages,
+          {
+            sender: { name: username, avatar: 'path/to/avatar.jpg' }, // Adjust avatar path as needed
+            message: msg,
+          },
+        ]);
+      });
 
-      conn.on("ListenRoomJoining",(username,msg)=>{  //listening for users joinging messages
-          console.log("msg: ",msg);
-          setMessages(messages=>[...messages,{username,msg}])
-      })
-
-      conn.on("ReceiveSpecificMessage",(username,msg)=>  //listening for chatting messages
-      {
-          console.log("fun");
-          setMessages(messages=>[...messages,{username,msg}])
-
-      })
+      conn.on("ReceiveSpecificMessage", (username, msg) => {
+        setMessages((prevMessages) => [
+          ...prevMessages,
+          {
+            sender: { name: username, avatar: 'path/to/avatar.jpg' }, // Adjust avatar path as needed
+            message: msg,
+          },
+        ]);
+        console.log("receive username", username);
+      });
 
       await conn.start();
-      await conn.invoke("joinSpecificChatRoom",{userName,chatRoom});
       setConnection(conn);
-
-
-  } catch (error) {
-    console.log(error);
-  }
+      await conn.invoke("joinSpecificChatRoom", { userName: newUserName, chatRoom: newChatRoom });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (
@@ -83,5 +90,4 @@ function GroupOption({ myUserName, setMyUserName, conn, setConnection, activeCha
     </div>
   );
 }
-
 export default GroupOption;
