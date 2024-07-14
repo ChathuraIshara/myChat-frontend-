@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { Avatar, Button, Divider } from '@mui/material';
-import { HubConnectionBuilder, LogLevel } from "@microsoft/signalr";
+import { HubConnectionBuilder, LogLevel,HttpTransportType } from "@microsoft/signalr";
 import SendIcon from '@mui/icons-material/Send';
 import './GroupOption.css';
 import AddIcon from '@mui/icons-material/Add';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
+
 function GroupOption({ myUserName, setMyUserName, conn, setConnection, activeChat, setActiveChat, messages, setMessages }) {
   const [groups, setGroups] = useState([{ name: 'Python Dev' }, { name: 'Call of Duty' }, { name: 'Cricket World' }]);
   const [userName, setUserName] = useState();
@@ -21,7 +22,10 @@ function GroupOption({ myUserName, setMyUserName, conn, setConnection, activeCha
 
     try {
       const conn = new HubConnectionBuilder()
-        .withUrl("https://mychatmor.azurewebsites.net/chat"
+        .withUrl("https://mychatmor.azurewebsites.net/chat", {
+          skipNegotiation: true,
+          transport: HttpTransportType.WebSockets
+      }
         )
         .configureLogging(LogLevel.Information)
         .build();
