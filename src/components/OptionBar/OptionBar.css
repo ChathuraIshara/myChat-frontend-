@@ -12,3 +12,13 @@
     background-color: rgba(234, 241, 255, 0.823);
    
 }
+
+@media(max-width:840px)
+{
+    .optionbar{
+        left:0;
+        width: 32%;
+    }
+  
+  
+}

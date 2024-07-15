@@ -9,8 +9,22 @@ import ContactsIcon from "@mui/icons-material/Contacts";
 import RestoreFromTrashIcon from "@mui/icons-material/RestoreFromTrash";
 import SettingsIcon from "@mui/icons-material/Settings";
 import { useState } from "react";
+import menuicon from '../../images/menu-icon.png'
+import { jwtDecode } from "jwt-decode";
+import { useEffect } from "react";
 
-function SideBar({type,setType,setActiveChat}) {
+function SideBar({myUserName,type,setType,setActiveChat}) {
+  
+
+  const [isMobileMenu,setIsMobileMenu]=useState(true);
+
+  const handleToggle=()=>
+    {
+      isMobileMenu?setIsMobileMenu(false):setIsMobileMenu(true);
+  
+    }
+
+
   const handleTimeline = () => {
     setType("timeline");
     setActiveChat(null);
@@ -34,7 +48,8 @@ function SideBar({type,setType,setActiveChat}) {
     <div className="sidebar">
       <Box sx={{ display: "flex", alignItems: "center", margin: "20px" }}>
         <Avatar alt="Remy Sharp" src={avimg} />
-        <h3 className="username">Chathura</h3>
+        <h3 className="username">{myUserName}</h3>
+      
       </Box>
       <Box sx={{ margin: "0px" }}>
         <ul>

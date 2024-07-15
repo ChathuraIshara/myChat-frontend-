@@ -11,11 +11,7 @@ function GroupOption({ myUserName, setMyUserName, conn, setConnection, activeCha
   const [chatRoom, setChatRoom] = useState();
   
   async function handleChatClick(group) {
-    let x = Math.floor(Math.random() * 100) + 1;
-    const newUserName = `${x}`;
     const newChatRoom = group.name;
-    setMyUserName(newUserName);
-    setUserName(newUserName);
     setChatRoom(newChatRoom);
     setActiveChat(group);
 
@@ -49,7 +45,7 @@ function GroupOption({ myUserName, setMyUserName, conn, setConnection, activeCha
 
       await conn.start();
       setConnection(conn);
-      await conn.invoke("joinSpecificChatRoom", { userName: newUserName, chatRoom: newChatRoom });
+      await conn.invoke("joinSpecificChatRoom", { userName: myUserName, chatRoom: newChatRoom });
     } catch (error) {
       console.log(error);
     }

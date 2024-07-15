@@ -62,3 +62,25 @@
     align-items: center;
 }
 
+.menuicon
+{
+    display: none;
+}
+
+@media(max-width:840px)
+{
+    .sidebar{
+        display: none;
+    }
+  
+  
+}
+
+
+
+.hide-mobile-menu
+{
+    right:-200px;
+}
+
+
