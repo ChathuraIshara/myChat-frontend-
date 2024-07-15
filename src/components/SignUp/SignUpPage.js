@@ -102,7 +102,7 @@ const SignupPage = () => {
       });
 
       // Assume successful registration leads to login page
-      window.location.href = '/login';
+      window.location.href = '/';
     } catch (error) {
       console.error('Registration failed:', error);
       // Handle error states or display error messages as needed
