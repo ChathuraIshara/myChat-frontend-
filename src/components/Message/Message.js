@@ -24,7 +24,7 @@ const MessageBubble = styled(Box)(({ isSender }) => ({
 const Message = ({ sender, message, isSender }) => {
   return (
     <MessageContainer isSender={isSender}>
-      {!isSender && <Avatar alt={sender.username} src={sender.avatar} />}
+      {!isSender && <Avatar alt={sender.name} src={sender.avatar} />}
       <MessageBubble isSender={isSender}>
         <Typography variant="body1">{message}</Typography>
       </MessageBubble>
