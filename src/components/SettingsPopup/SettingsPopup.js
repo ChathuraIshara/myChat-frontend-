@@ -50,7 +50,7 @@ export default function SettingsPopup({
     const mtoken = localStorage.getItem("myChatToken");
     const id = jwtDecode(mtoken).Id;
     try{
-        var response = await axios.put("https://mychatmor.azurewebsites.net/api/User/"+`${id}`, {
+        var response = await axios.put("https://mychatmor.azurewebsites.net/api/User/user/"+`${id}`, {
             id: id,
             name: name,
             email: email,
