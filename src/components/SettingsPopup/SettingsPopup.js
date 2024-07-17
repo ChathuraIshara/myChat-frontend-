@@ -50,7 +50,7 @@ export default function SettingsPopup({
     const mtoken = localStorage.getItem("myChatToken");
     const id = jwtDecode(mtoken).Id;
     try{
-        var response = await axios.put("https://mychatmor.azurewebsites.net/chat/api/User/"+`${id}`, {
+        var response = await axios.put("https://mychatmor.azurewebsites.net/api/User/"+`${id}`, {
             id: id,
             name: name,
             email: email,
@@ -59,6 +59,7 @@ export default function SettingsPopup({
           {
             console.log("user updated succesfully");
             setMyUserName(name);
+            setSettingsOpen(false);
 
           }
 
