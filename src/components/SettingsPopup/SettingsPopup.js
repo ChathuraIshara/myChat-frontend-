@@ -54,6 +54,8 @@ export default function SettingsPopup({
             id: id,
             name: name,
             email: email,
+            password:"",
+            userImgUrl:""
           });
           if(response.status==200)
           {
