@@ -55,14 +55,15 @@ export default function FileChosePopup({setImgFIle,fileChosenOpen,setFileChosenO
 
   const handleFileAdd=()=>
 {
+  setFileChosenOpen(false);
+
 
 
 }
 
 const handleChooseFileOpen=()=>
 {
-  setFileChosenOpen(false);
-
+ 
 }
 
  
