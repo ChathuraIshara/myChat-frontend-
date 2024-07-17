@@ -23,7 +23,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   },
 }));
 
-export default function FileChosePopup({fileChosenOpen,setFileChosenOpen}) {
+export default function FileChosePopup({setImgFIle,fileChosenOpen,setFileChosenOpen}) {
     const mtoken = localStorage.getItem('myChatToken');
 
    
@@ -36,6 +36,7 @@ export default function FileChosePopup({fileChosenOpen,setFileChosenOpen}) {
       
         const handleFileChange = (event) => {
             const file = event.target.files[0];
+            setImgFIle(file);
             if (file) {
               const reader = new FileReader();
               reader.onloadend = () => {

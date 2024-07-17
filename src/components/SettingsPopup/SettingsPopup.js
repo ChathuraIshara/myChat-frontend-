@@ -40,6 +40,7 @@ export default function SettingsPopup({
 
   const [name, setName] = useState(myUserName);
   const [email, setEmail] = useState(jwtDecode(mtoken).Email);
+  const [imgFile,setImgFIle]=useState();
 
   const handleClose = () => {
     setIsEditDisabled(true);
@@ -49,6 +50,15 @@ export default function SettingsPopup({
   async function handleRealUpdate() {
     const mtoken = localStorage.getItem("myChatToken");
     const id = jwtDecode(mtoken).Id;
+
+    const preset_key="chathura";
+    const formData=new FormData();
+    formData.append("file",imgFile);
+    formData.append("upload_preset",preset_key);
+
+    axios.post('cloudinary://553964132456753:TruyFpN0DKLdzMY3G4X6livN0mU@dcabglcnt',formData).then(res=>console.log(res)).catch(err=>console.log(err));
+
+
     try{
         var response = await axios.put("https://mychatmor.azurewebsites.net/api/User/user/"+`${id}`, {
             id: id,
@@ -153,7 +163,7 @@ export default function SettingsPopup({
           </Button>
         </DialogActions>
       </BootstrapDialog>
-      <FileChosePopup
+      <FileChosePopup setImgFIle={setImgFIle}
         fileChosenOpen={fileChosenOpen}
         setFileChosenOpen={setFileChosenOpen}
       ></FileChosePopup>
