@@ -12,11 +12,15 @@ import { useState } from "react";
 import menuicon from '../../images/menu-icon.png'
 import { jwtDecode } from "jwt-decode";
 import { useEffect } from "react";
+import SettingsPopup from "../SettingsPopup/SettingsPopup";
 
-function SideBar({myUserName,type,setType,setActiveChat}) {
+function SideBar({myImgUrl,setMyImgurl,setMyUserName,myUserName,type,setType,setActiveChat}) {
+
+  
   
 
   const [isMobileMenu,setIsMobileMenu]=useState(true);
+  const [settingsOpen,setSettingsOpen]=useState(false);
 
   const handleToggle=()=>
     {
@@ -41,13 +45,15 @@ function SideBar({myUserName,type,setType,setActiveChat}) {
     setActiveChat(null);
   };
   const handleSettings = () => {
+    setSettingsOpen(true);
     setType("settings");
     setActiveChat(null);
+    
   };
   return (
     <div className="sidebar">
       <Box sx={{ display: "flex", alignItems: "center", margin: "20px" }}>
-        <Avatar alt="Remy Sharp" src={avimg} />
+        <Avatar alt="Remy Sharp" src={myImgUrl} />
         <h3 className="username">{myUserName}</h3>
       
       </Box>
@@ -101,6 +107,7 @@ function SideBar({myUserName,type,setType,setActiveChat}) {
           </li>
         </ul>
       </Box>
+      <SettingsPopup myImgUrl={myImgUrl} myUserName={myUserName} setMyImgurl={setMyImgurl} setMyUserName={setMyUserName}  settingsOpen={settingsOpen} setSettingsOpen={setSettingsOpen}></SettingsPopup>
     </div>
   );
 }

@@ -13,6 +13,7 @@ function MyChatApp() {
   const [messages,setMessages]=useState([]);
   const [conn,setConnection]=useState();
   const [myUserName,setMyUserName]=useState('');
+  const [myImgUrl,setMyImgUrl]=useState('');
 
   useEffect(() => {
     const mtoken = localStorage.getItem('myChatToken');
@@ -20,6 +21,7 @@ function MyChatApp() {
     const name =jwtDecode(mtoken).Name;
     const id =jwtDecode(mtoken).Id;
     setMyUserName(name);
+    setMyImgUrl(jwtDecode(mtoken).imgurl);
 
   
   
@@ -30,7 +32,7 @@ function MyChatApp() {
     <div className="App">
      
       <div className="mainApp">
-      <SideBar myUserName={myUserName} setActiveChat={setActiveChat} type={type} setType={setType}></SideBar>
+      <SideBar myImgUrl={myImgUrl} setMyImgUrl={setMyImgUrl} setMyUserName={setMyUserName} myUserName={myUserName} setActiveChat={setActiveChat} type={type} setType={setType}></SideBar>
       <OptionBar myUserName={myUserName} setMyUserName={setMyUserName} conn={conn} setConnection={setConnection} messages={messages} setMessages={setMessages} activeChat={activeChat} setActiveChat={setActiveChat} type={type} setType={setType}></OptionBar>
       <ChatBar myUserName={myUserName} setMyUserName={setMyUserName}  conn={conn} setConnection={setConnection} messages={messages} setMessages={setMessages}  activeChat={activeChat} setActiveChat={setActiveChat}></ChatBar>
       </div> 
