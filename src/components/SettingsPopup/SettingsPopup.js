@@ -62,6 +62,7 @@ export default function SettingsPopup({
             console.log("user updated succesfully");
             setMyUserName(name);
             setSettingsOpen(false);
+            setIsEditDisabled(false);
 
           }
 
@@ -133,7 +134,7 @@ export default function SettingsPopup({
             <TextField
               onChange={handleNewName}
               disabled={isEditDisabled}
-              value={name}
+              value={myUserName}
               label="Fullname"
             ></TextField>
             <TextField
