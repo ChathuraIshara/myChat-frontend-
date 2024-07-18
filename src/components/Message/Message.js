@@ -26,6 +26,7 @@ const Message = ({ sender, message, isSender,myUserId }) => {
   useEffect(() => {
     console.log("myUserId",myUserId);
     console.log("sender id",sender.id);
+    console.log("imgurl",sender.userImgUrl);
     
   }, []);
 
