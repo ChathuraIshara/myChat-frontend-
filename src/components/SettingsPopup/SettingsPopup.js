@@ -58,7 +58,7 @@ export default function SettingsPopup({
     formData.append("upload_preset",preset_key);
 
     const res = await axios.post('https://api.cloudinary.com/v1_1/dcabglcnt/image/upload', formData);
-   setStoredImgUrl(res.data.secure_url);
+    const storedImgUrl = res.data.secure_url;
 
 
     try{
