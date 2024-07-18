@@ -39,7 +39,7 @@ export default function SettingsPopup({
   const [fileChosenOpen, setFileChosenOpen] = useState(false);
 
   const [name, setName] = useState(jwtDecode(mtoken).Name);
-  const [email, setEmail] = useState(jwtDecode(mtoken).Email);
+  const [email, setEmail] = useState(jwtDecode(mtoken).Email);  //get email value
   const [imgFile,setImgFIle]=useState();
 
   const handleClose = () => {
