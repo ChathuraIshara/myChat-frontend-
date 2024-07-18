@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box, Typography, Avatar } from '@mui/material';
 import { styled } from '@mui/system';
+import { useEffect } from 'react';
 
 const MessageContainer = styled(Box)(({ isSender }) => ({
   display: 'flex',
