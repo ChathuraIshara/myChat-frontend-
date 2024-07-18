@@ -21,7 +21,15 @@ const MessageBubble = styled(Box)(({ isSender }) => ({
   marginRight: isSender ? '0' : '10px',
 }));
 
-const Message = ({ sender, message, isSender }) => {
+const Message = ({ sender, message, isSender,myUserId }) => {
+  useEffect(() => {
+    console.log("myUserId",myUserId);
+    console.log("sender id",sender.id);
+    
+  }, []);
+
+
+
   return (
     <MessageContainer isSender={isSender}>
       {!isSender && <Avatar alt={sender.name} src={sender.userImgUrl} />}
