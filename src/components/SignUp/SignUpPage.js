@@ -99,6 +99,7 @@ const SignupPage = () => {
         name: form.username,
         email: form.email,
         password: form.password,
+        userImgUrl:""
       });
 
       // Assume successful registration leads to login page
