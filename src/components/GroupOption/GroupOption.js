@@ -47,7 +47,7 @@ function GroupOption({ myUserName, setMyUserName, conn, setConnection, activeCha
             message: msg,
           },
         ]);
-        console.log("receive username", userId);
+        console.log("sender", user);
       });
 
       await conn.start();
