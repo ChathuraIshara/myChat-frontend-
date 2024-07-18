@@ -41,6 +41,7 @@ export default function SettingsPopup({
   const [name, setName] = useState(jwtDecode(mtoken).Name);
   const [email, setEmail] = useState(jwtDecode(mtoken).Email);  //get email value
   const [imgFile,setImgFIle]=useState();
+  const [storedImgUrl,setStoredImgUrl]=useState('');
 
   const handleClose = () => {
     setIsEditDisabled(true);
@@ -56,7 +57,7 @@ export default function SettingsPopup({
     formData.append("file",imgFile);
     formData.append("upload_preset",preset_key);
 
-    axios.post('https://api.cloudinary.com/v1_1/dcabglcnt/image/upload',formData).then(res=>console.log(res.data.secure_url)).catch(err=>console.log(err));
+    axios.post('https://api.cloudinary.com/v1_1/dcabglcnt/image/upload',formData).then(res=>setStoredImgUrl(res.data.secure_url)).catch(err=>console.log(err));
 
 
     try{
@@ -65,7 +66,7 @@ export default function SettingsPopup({
             name: name,
             email: email,
             password:"",
-            userImgUrl:""
+            userImgUrl:storedImgUrl,
           });
           if(response.status==200)
           {
