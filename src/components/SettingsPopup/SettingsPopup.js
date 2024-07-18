@@ -32,6 +32,7 @@ export default function SettingsPopup({
   setMyUserName,
   settingsOpen,
   setSettingsOpen,
+  setUserUpdateCount
 }) {
   const mtoken = localStorage.getItem("myChatToken");
 
@@ -73,10 +74,11 @@ export default function SettingsPopup({
           if(response.status==200)
           {
             console.log("user updated succesfully");
-            setMyUserName(name);
+            localStorage.setItem("myChatToken", response.data);
+            setUserUpdateCount(count=>count+1);
             setSettingsOpen(false);
             setIsEditDisabled(false);
-            setMyImgUrl(storedImgUrl);
+            
 
           }
 

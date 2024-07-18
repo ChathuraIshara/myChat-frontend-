@@ -14,7 +14,7 @@ import { jwtDecode } from "jwt-decode";
 import { useEffect } from "react";
 import SettingsPopup from "../SettingsPopup/SettingsPopup";
 
-function SideBar({myImgUrl,setMyImgurl,setMyUserName,myUserName,type,setType,setActiveChat}) {
+function SideBar({myImgUrl,setMyImgurl,setMyUserName,myUserName,type,setType,setActiveChat,setUserUpdateCount}) {
 
   
   
@@ -107,7 +107,7 @@ function SideBar({myImgUrl,setMyImgurl,setMyUserName,myUserName,type,setType,set
           </li>
         </ul>
       </Box>
-      <SettingsPopup myImgUrl={myImgUrl} myUserName={myUserName} setMyImgurl={setMyImgurl} setMyUserName={setMyUserName}  settingsOpen={settingsOpen} setSettingsOpen={setSettingsOpen}></SettingsPopup>
+      <SettingsPopup setUserUpdateCount={setUserUpdateCount} myImgUrl={myImgUrl} myUserName={myUserName} setMyImgurl={setMyImgurl} setMyUserName={setMyUserName}  settingsOpen={settingsOpen} setSettingsOpen={setSettingsOpen}></SettingsPopup>
     </div>
   );
 }
