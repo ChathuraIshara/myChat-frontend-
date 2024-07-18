@@ -67,7 +67,7 @@ const LoginPage = () => {
 
     try {
       // Send login data to the backend
-      const response = await axios.post(`https://mychatmor.azurewebsites.net/api/Auth/login`,{
+      const response = await axios.post("https://mychatmor.azurewebsites.net/api/Auth/login",{
         username:form.username,
         password:form.password
       });
