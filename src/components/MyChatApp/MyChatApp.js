@@ -36,7 +36,7 @@ function MyChatApp() {
       <div className="mainApp">
       <SideBar setUserUpdateCount={setUserUpdateCount} myImgUrl={myImgUrl} setMyImgUrl={setMyImgUrl} setMyUserName={setMyUserName} myUserName={myUserName} setActiveChat={setActiveChat} type={type} setType={setType}></SideBar>
       <OptionBar myUserName={myUserName} setMyUserName={setMyUserName} conn={conn} setConnection={setConnection} messages={messages} setMessages={setMessages} activeChat={activeChat} setActiveChat={setActiveChat} type={type} setType={setType}></OptionBar>
-      <ChatBar myUserName={myUserName} setMyUserName={setMyUserName}  conn={conn} setConnection={setConnection} messages={messages} setMessages={setMessages}  activeChat={activeChat} setActiveChat={setActiveChat}></ChatBar>
+      <ChatBar myUserId={id} myUserName={myUserName} setMyUserName={setMyUserName}  conn={conn} setConnection={setConnection} messages={messages} setMessages={setMessages}  activeChat={activeChat} setActiveChat={setActiveChat}></ChatBar>
       </div> 
       
     </div>
