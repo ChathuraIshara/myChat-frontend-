@@ -14,6 +14,7 @@ function MyChatApp() {
   const [conn,setConnection]=useState();
   const [myUserName,setMyUserName]=useState('');
   const [myImgUrl,setMyImgUrl]=useState('');
+  const [myUserId,setMyUserId]=useState('');
 
   const [userUpdateCount,setUserUpdateCount]=useState(0);
 
@@ -24,6 +25,7 @@ function MyChatApp() {
     const id =jwtDecode(mtoken).Id;
     setMyUserName(name);
     setMyImgUrl(jwtDecode(mtoken).imgurl);
+    setMyUserId(id);
 
   
   
@@ -36,7 +38,7 @@ function MyChatApp() {
       <div className="mainApp">
       <SideBar setUserUpdateCount={setUserUpdateCount} myImgUrl={myImgUrl} setMyImgUrl={setMyImgUrl} setMyUserName={setMyUserName} myUserName={myUserName} setActiveChat={setActiveChat} type={type} setType={setType}></SideBar>
       <OptionBar myUserName={myUserName} setMyUserName={setMyUserName} conn={conn} setConnection={setConnection} messages={messages} setMessages={setMessages} activeChat={activeChat} setActiveChat={setActiveChat} type={type} setType={setType}></OptionBar>
-      <ChatBar myUserId={id} myUserName={myUserName} setMyUserName={setMyUserName}  conn={conn} setConnection={setConnection} messages={messages} setMessages={setMessages}  activeChat={activeChat} setActiveChat={setActiveChat}></ChatBar>
+      <ChatBar myUserId={myUserId} myUserName={myUserName} setMyUserName={setMyUserName}  conn={conn} setConnection={setConnection} messages={messages} setMessages={setMessages}  activeChat={activeChat} setActiveChat={setActiveChat}></ChatBar>
       </div> 
       
     </div>
