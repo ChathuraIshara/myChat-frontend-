@@ -26,7 +26,7 @@ const Message = ({ sender, message, isSender,myUserId }) => {
   useEffect(() => {
     console.log("myUserId",myUserId);
     console.log("sender id",sender.id);
-    console.log("imgurl",sender.userimgurl);
+    console.log("imgurl",sender.avatar);
     
   }, []);
 
@@ -34,7 +34,7 @@ const Message = ({ sender, message, isSender,myUserId }) => {
 
   return (
     <MessageContainer isSender={isSender}>
-      {!isSender && <Avatar alt={sender.name} src={sender.userimgurl} />}
+      {!isSender && <Avatar alt={sender.name} src={sender.avatar} />}
       <MessageBubble isSender={isSender}>
         <Typography variant="body1">{message}</Typography>
       </MessageBubble>
