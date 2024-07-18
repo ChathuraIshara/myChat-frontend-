@@ -76,6 +76,7 @@ export default function SettingsPopup({
             setMyUserName(name);
             setSettingsOpen(false);
             setIsEditDisabled(false);
+            setMyImgUrl(storedImgUrl);
 
           }
 
