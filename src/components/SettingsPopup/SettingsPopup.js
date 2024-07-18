@@ -57,7 +57,8 @@ export default function SettingsPopup({
     formData.append("file",imgFile);
     formData.append("upload_preset",preset_key);
 
-    axios.post('https://api.cloudinary.com/v1_1/dcabglcnt/image/upload',formData).then(res=>console.log(res.data.secure_url)).catch(err=>console.log(err));
+    const res = await axios.post('https://api.cloudinary.com/v1_1/dcabglcnt/image/upload', formData);
+    setStoredImgUrl(res.data.secure_url);
 
 
     try{
