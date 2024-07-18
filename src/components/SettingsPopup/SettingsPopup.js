@@ -39,7 +39,7 @@ export default function SettingsPopup({
   const [isEditDisabled, setIsEditDisabled] = useState(true);
   const [fileChosenOpen, setFileChosenOpen] = useState(false);
 
-  const [name, setName] = useState(jwtDecode(mtoken).Name);
+  const [name, setName] = useState(myUserName);
   const [email, setEmail] = useState(jwtDecode(mtoken).Email);  //get email value
   const [imgFile,setImgFIle]=useState();
   const [storedImgUrl,setStoredImgUrl]=useState('');
@@ -76,8 +76,9 @@ export default function SettingsPopup({
             console.log("user updated succesfully");
             localStorage.setItem("myChatToken", response.data);
             setUserUpdateCount(count=>count+1);
+            setIsEditDisabled(true);
             setSettingsOpen(false);
-            setIsEditDisabled(false);
+            
             
 
           }
