@@ -61,6 +61,7 @@ export default function SettingsPopup({
 
 
     try{
+       console.log("im",storedImgUrl);
         var response = await axios.put("https://mychatmor.azurewebsites.net/api/User/user/"+`${id}`, {
             id: id,
             name: name,
