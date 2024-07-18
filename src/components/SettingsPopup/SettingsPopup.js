@@ -38,7 +38,7 @@ export default function SettingsPopup({
   const [isEditDisabled, setIsEditDisabled] = useState(true);
   const [fileChosenOpen, setFileChosenOpen] = useState(false);
 
-  const [name, setName] = useState(myUserName);
+  const [name, setName] = useState(jwtDecode(mtoken).Name);
   const [email, setEmail] = useState(jwtDecode(mtoken).Email);
   const [imgFile,setImgFIle]=useState();
 
@@ -144,7 +144,7 @@ export default function SettingsPopup({
             <TextField
               onChange={handleNewName}
               disabled={isEditDisabled}
-              value={myUserName}
+              value={name}
               label="Fullname"
             ></TextField>
             <TextField
