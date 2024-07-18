@@ -33,7 +33,7 @@ function GroupOption({ myUserName, setMyUserName, conn, setConnection, activeCha
         setMessages((prevMessages) => [
           ...prevMessages,
           {
-            sender: { name: user.name, avatar: user.userImgUrl }, // Adjust avatar path as needed
+            sender: { name: user.name, avatar: user.userImgUrl,id: user.id }, // Adjust avatar path as needed
             message: msg,
           },
         ]);
@@ -43,7 +43,7 @@ function GroupOption({ myUserName, setMyUserName, conn, setConnection, activeCha
         setMessages((prevMessages) => [
           ...prevMessages,
           {
-            sender: { name: user.name, avatar:user.userImgUrl }, // Adjust avatar path as needed
+            sender: { name: user.name, avatar:user.userImgUrl,id: user.id }, // Adjust avatar path as needed
             message: msg,
           },
         ]);
