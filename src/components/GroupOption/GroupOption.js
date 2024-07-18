@@ -28,22 +28,22 @@ function GroupOption({ myUserName, setMyUserName, conn, setConnection, activeCha
         .configureLogging(LogLevel.Information)
         .build();
 
-      conn.on("ListenRoomJoining", (userId, msg) => {
+      conn.on("ListenRoomJoining", (user, msg) => {
         console.log("msg: ", msg);
         setMessages((prevMessages) => [
           ...prevMessages,
           {
-            sender: { name: userId, avatar: 'path/to/avatar.jpg' }, // Adjust avatar path as needed
+            sender: { name: user.name, avatar: user.userImgUrl }, // Adjust avatar path as needed
             message: msg,
           },
         ]);
       });
 
-      conn.on("ReceiveSpecificMessage", (userId, msg) => {
+      conn.on("ReceiveSpecificMessage", (user, msg) => {
         setMessages((prevMessages) => [
           ...prevMessages,
           {
-            sender: { name: userId, avatar: 'path/to/avatar.jpg' }, // Adjust avatar path as needed
+            sender: { name: user.name, avatar:user.userImgUrl }, // Adjust avatar path as needed
             message: msg,
           },
         ]);
